@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Foodeez — Product Requirements</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Manrope:wght@400;500;600;700&family=Noto+Nastaliq+Urdu:wght@500;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--y:#FFD60A;--ink:#0E0D0B;--cream:#FBF7EC;--line:#E6DFC9;--mute:#6B665A;--red:#E0301E}
+*{box-sizing:border-box}
+body{margin:0;background:var(--cream);color:var(--ink);font:16px/1.65 Manrope,sans-serif}
+.wrap{max-width:1040px;margin:0 auto;padding:0 40px}
+header.cover{background:var(--ink);color:#fff;padding:64px 0 56px;position:relative;overflow:hidden}
+.cover .wrap{display:grid;grid-template-columns:1fr 220px;gap:40px;align-items:center}
+.cover img{width:220px;filter:drop-shadow(0 20px 40px rgba(0,0,0,.5))}
+.eyebrow{font:600 12px/1 'JetBrains Mono',monospace;letter-spacing:.14em;text-transform:uppercase;color:var(--y)}
+h1{font-family:Archivo;font-stretch:125%;font-weight:900;font-size:72px;line-height:.92;margin:18px 0 18px;letter-spacing:-.02em}
+.cover p{color:#CFC8B4;max-width:560px;margin:0}
+.meta{display:flex;gap:28px;margin-top:28px;font:500 13px 'JetBrains Mono',monospace;color:#9C9583}
+.meta b{color:#fff;font-weight:600;display:block}
+nav.toc{position:sticky;top:0;background:var(--y);z-index:5;border-bottom:2px solid var(--ink)}
+nav.toc .wrap{display:flex;gap:4px;overflow-x:auto;padding-top:10px;padding-bottom:10px}
+nav.toc a{font:700 13px Archivo;font-stretch:110%;text-transform:uppercase;color:var(--ink);text-decoration:none;padding:6px 12px;border-radius:99px;white-space:nowrap}
+nav.toc a:hover{background:var(--ink);color:var(--y)}
+section{padding:64px 0;border-bottom:1px solid var(--line)}
+h2{font-family:Archivo;font-stretch:118%;font-weight:900;font-size:40px;line-height:1;margin:0 0 8px;letter-spacing:-.01em;display:flex;gap:16px;align-items:baseline}
+h2 .n{font:600 14px 'JetBrains Mono';color:var(--mute)}
+h3{font-family:Archivo;font-stretch:110%;font-weight:800;font-size:20px;margin:32px 0 10px}
+.lede{font-size:19px;color:#3A372F;max-width:760px;text-wrap:pretty}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.card{background:#fff;border:1.5px solid var(--ink);border-radius:14px;padding:22px}
+.card h4{margin:0 0 6px;font:800 17px Archivo;font-stretch:110%}
+.card p{margin:0;color:#4A463C;font-size:15px}
+.ur{font-family:'Noto Nastaliq Urdu';direction:rtl;line-height:2}
+table{width:100%;border-collapse:collapse;font-size:14.5px;background:#fff;border:1.5px solid var(--ink);border-radius:12px;overflow:hidden}
+th{background:var(--ink);color:var(--y);text-align:left;font:700 12px 'JetBrains Mono';letter-spacing:.06em;text-transform:uppercase;padding:12px 14px}
+td{padding:12px 14px;border-top:1px solid var(--line);vertical-align:top}
+.pill{display:inline-block;font:700 11px 'JetBrains Mono';padding:3px 8px;border-radius:99px;background:var(--y);border:1px solid var(--ink)}
+.pill.p1{background:var(--ink);color:var(--y)}
+.pill.p2{background:#fff}
+ul.tight{padding-left:20px;margin:8px 0} ul.tight li{margin:4px 0}
+.flow{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:14px 0}
+.flow span{background:#fff;border:1.5px solid var(--ink);border-radius:10px;padding:8px 12px;font:700 13px Archivo;font-stretch:105%}
+.flow i{font-style:normal;color:var(--mute)}
+.flow span.y{background:var(--y)}
+.status{display:grid;grid-template-columns:repeat(5,1fr);gap:0;margin:18px 0;border:1.5px solid var(--ink);border-radius:12px;overflow:hidden}
+.status div{padding:16px;background:#fff;border-right:1px solid var(--line)}
+.status div:last-child{border:0}
+.status b{font:800 15px Archivo;display:block}
+.status small{color:var(--mute);font-size:12.5px}
+code{font:13px 'JetBrains Mono';background:#F1EBD8;padding:2px 6px;border-radius:5px}
+pre{font:12.5px/1.6 'JetBrains Mono';background:var(--ink);color:#E9E2CC;padding:20px;border-radius:12px;overflow:auto}
+.kpi{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.kpi div{background:var(--ink);color:#fff;border-radius:14px;padding:20px}
+.kpi b{font:900 34px Archivo;font-stretch:120%;color:var(--y);display:block}
+.kpi small{color:#BDB6A2}
+.cta{display:flex;gap:12px;margin-top:22px}
+.cta a{font:800 14px Archivo;font-stretch:110%;text-transform:uppercase;text-decoration:none;padding:14px 20px;border-radius:99px;border:2px solid var(--ink)}
+.cta a.p{background:var(--y);color:var(--ink)}
+.cta a.s{color:#fff;border-color:#fff}
+footer{padding:40px 0 80px;color:var(--mute);font-size:13px}
+@media(max-width:800px){.grid2,.grid3,.kpi,.status{grid-template-columns:1fr}.cover .wrap{grid-template-columns:1fr}h1{font-size:48px}}
+</style>
+</head>
+<body>
+<header class="cover">
+  <div class="wrap">
+    <div>
+      <div class="eyebrow">Product Requirements Document · v1.0</div>
+      <h1>FOODEEZ<br>DIGITAL</h1>
+      <p>A full-stack ordering platform for Foodeez, Taunsa Sharif — customer website, online ordering with live tracking, and an operations admin for the kitchen, counter and riders.</p>
+      <div class="meta"><div><b>Owner</b>Foodeez Management</div><div><b>Date</b>24 Oct 2026</div><div><b>Status</b>Design ready</div></div>
+      <div class="cta"><a class="p" href="/">Open customer site →</a><a class="s" href="/admin.html">Open admin panel →</a></div>
+    </div>
+    <img src="/assets/logo.png" alt="Foodeez logo">
+  </div>
+</header>
+<nav class="toc"><div class="wrap">
+  <a href="#s1">Context</a><a href="#s2">Goals</a><a href="#s3">Users</a><a href="#s4">Customer app</a><a href="#s5">Order lifecycle</a><a href="#s6">Admin</a><a href="#s7">Menu</a><a href="#s8">Data & API</a><a href="#s9">Non-functional</a><a href="#s10">Roadmap</a>
+</div></nav>
+
+<main class="wrap">
+<section id="s1">
+  <h2><span class="n">01</span>Context</h2>
+  <p class="lede">Foodeez is a multi-cuisine restaurant on New College Road, Taunsa Sharif — Pakistani, Chinese, BBQ and fast food under one roof, with dine-in, takeaway and home delivery. Today orders arrive over phone calls, WhatsApp and Facebook DMs. That works at 20 orders a night; it breaks at 80.</p>
+  <div class="grid3" style="margin-top:28px">
+    <div class="card"><h4>The problem</h4><p>Orders get lost between calls and chats. Prices quoted differ from the menu card. No record of who ordered what, and no way to know when a rider will arrive.</p></div>
+    <div class="card"><h4>The opportunity</h4><p>Taunsa has no restaurant with its own ordering site. Foodeez's social following (TikTok, Facebook) can be converted directly into orders without paying aggregator commission.</p></div>
+    <div class="card"><h4>Brand</h4><p>"Taste the joy." Loud yellow, heavy black, a cheeky chef with a moustache. Confident, local, fun — never corporate. <span class="ur">ذائقہ خوشی کا</span></p></div>
+  </div>
+</section>
+
+<section id="s2">
+  <h2><span class="n">02</span>Goals & success metrics</h2>
+  <div class="kpi" style="margin-top:24px">
+    <div><b>40%</b><small>of orders placed online within 90 days</small></div>
+    <div><b>&lt; 90s</b><small>median time from opening the site to placing an order</small></div>
+    <div><b>35 min</b><small>median delivery time, kitchen + ride</small></div>
+    <div><b>0</b><small>lost or mis-priced orders — single source of truth</small></div>
+  </div>
+  <h3>Non-goals (v1)</h3>
+  <ul class="tight"><li>Third-party aggregator integration (foodpanda) — later.</li><li>Native iOS/Android apps — the site is a mobile-first PWA.</li><li>Multi-branch — architecture supports it, UI does not expose it yet.</li></ul>
+</section>
+
+<section id="s3">
+  <h2><span class="n">03</span>Users & roles</h2>
+  <table style="margin-top:20px">
+    <tr><th>Role</th><th>Who</th><th>Needs</th><th>Surface</th></tr>
+    <tr><td><b>Customer</b></td><td>Students, families, shop owners in Taunsa; 80% on Android, often on 3G</td><td>See the real menu & price, order in Urdu-friendly flow, pay cash, know when food arrives</td><td>Website / PWA</td></tr>
+    <tr><td><b>Owner / Manager</b></td><td>Foodeez management</td><td>Sales today vs last week, best sellers, change prices, run deals, open/close the store</td><td>Admin · Dashboard, Menu, Deals, Settings</td></tr>
+    <tr><td><b>Counter / Cashier</b></td><td>Front-desk staff</td><td>Accept new orders fast, call customer, assign rider, mark paid</td><td>Admin · Orders</td></tr>
+    <tr><td><b>Kitchen</b></td><td>Cooks on the line</td><td>Big, glanceable tickets; what to cook next; bump when done</td><td>Admin · Kitchen display (KDS)</td></tr>
+    <tr><td><b>Rider</b></td><td>3 delivery riders</td><td>Address, phone, amount to collect</td><td>Admin · Riders (v1), rider app (v2)</td></tr>
+  </table>
+</section>
+
+<section id="s4">
+  <h2><span class="n">04</span>Customer website</h2>
+  <p class="lede">Mobile-first, one-page storefront that opens straight onto food. Everything is two taps from adding to cart.</p>
+  <h3>Primary flow</h3>
+  <div class="flow"><span>Land (hero video)</span><i>→</i><span>Browse menu / search</span><i>→</i><span>Item sheet (size, extras, qty)</span><i>→</i><span>Cart drawer</span><i>→</i><span>Checkout</span><i>→</i><span class="y">Order placed</span><i>→</i><span class="y">Live tracking</span></div>
+  <table style="margin-top:16px">
+    <tr><th>Feature</th><th>Requirement</th><th>Priority</th></tr>
+    <tr><td>Hero</td><td>Full-bleed looping fire/smoke video, logo, store open/closed state, ETA, primary "Order now" CTA, phone call link.</td><td><span class="pill p1">P0</span></td></tr>
+    <tr><td>Menu</td><td>10 categories with sticky category rail + scroll-spy; live search across name & description; tags (Best seller, Spicy, New); sold-out items greyed and unorderable.</td><td><span class="pill p1">P0</span></td></tr>
+    <tr><td>Item options</td><td>Required single-choice groups (pizza size, karahi half/full, drink size) and optional multi-choice extras with price deltas. Special instructions field.</td><td><span class="pill p1">P0</span></td></tr>
+    <tr><td>Cart</td><td>Persistent across refresh. Qty steppers, line totals, promo code validation (min order), delivery fee + free-delivery threshold progress bar, minimum order guard.</td><td><span class="pill p1">P0</span></td></tr>
+    <tr><td>Checkout</td><td>Delivery / Pickup toggle; name, phone (PK format validation), address + landmark; payment: Cash on Delivery, JazzCash, EasyPaisa. No account required.</td><td><span class="pill p1">P0</span></td></tr>
+    <tr><td>Tracking</td><td>Order page with 5-step status timeline updating in real time from the admin, ETA, call-restaurant button, order summary.</td><td><span class="pill p1">P0</span></td></tr>
+    <tr><td>Deals</td><td>Featured bundle cards with "was" price and savings.</td><td><span class="pill">P1</span></td></tr>
+    <tr><td>Table booking</td><td>Name, phone, guests, date/time → appears in admin Reservations.</td><td><span class="pill">P1</span></td></tr>
+    <tr><td>Visit</td><td>Address, hours, phones, WhatsApp, map, socials.</td><td><span class="pill">P1</span></td></tr>
+    <tr><td>Urdu</td><td>Bilingual category labels; full Urdu toggle in v2.</td><td><span class="pill p2">P2</span></td></tr>
+  </table>
+</section>
+
+<section id="s5">
+  <h2><span class="n">05</span>Order lifecycle</h2>
+  <p class="lede">One status model drives the customer tracker, the counter board and the kitchen display.</p>
+  <div class="status">
+    <div><b>New</b><small>Placed by customer. Counter has 2 min SLA to accept. Audible alert.</small></div>
+    <div><b>Preparing</b><small>Accepted; ticket on KDS. Timer starts.</small></div>
+    <div><b>Ready</b><small>Kitchen bumped. Pickup: customer notified. Delivery: assign rider.</small></div>
+    <div><b>Out for delivery</b><small>Rider assigned and left. Customer sees rider name & phone.</small></div>
+    <div><b>Delivered</b><small>Cash collected / paid. Order closed, counts to revenue.</small></div>
+  </div>
+  <p>Any non-final order can be <b>Cancelled</b> with a reason. Pickup orders skip "Out for delivery" (Ready → Delivered = collected). Tickets older than 20 min in Preparing turn red on the KDS.</p>
+</section>
+
+<section id="s6">
+  <h2><span class="n">06</span>Admin panel</h2>
+  <div class="grid2" style="margin-top:20px">
+    <div class="card"><h4>Dashboard</h4><p>Today's revenue, orders, average order value, avg prep time — each vs same day last week. 7-day revenue chart, top-selling items, live order queue, store open/closed switch.</p></div>
+    <div class="card"><h4>Orders</h4><p>Kanban by status with one-tap advance; list view with search/filter; order detail with customer, items, payment, rider assignment, print receipt, cancel.</p></div>
+    <div class="card"><h4>Kitchen display</h4><p>Dark, high-contrast tickets in order of age with timers and modifiers in bold. Single "Bump" action. Designed for a wall-mounted tablet.</p></div>
+    <div class="card"><h4>Menu</h4><p>Table of all items by category: image, price, tags, availability toggle (86 an item instantly), edit drawer for name/desc/price/category/tags, add new item.</p></div>
+    <div class="card"><h4>Deals & promo codes</h4><p>Create percentage or flat codes with minimum order; activate/deactivate; usage count.</p></div>
+    <div class="card"><h4>Customers</h4><p>Auto-built from orders: name, phone, order count, lifetime spend, last order. Identify regulars.</p></div>
+    <div class="card"><h4>Riders</h4><p>Roster with on-shift toggle, current delivery, deliveries today, cash to collect.</p></div>
+    <div class="card"><h4>Reservations & Settings</h4><p>Table bookings to confirm. Store hours, delivery fee, free-delivery threshold, min order, ETA, contact numbers.</p></div>
+  </div>
+  <h3>Permissions</h3>
+  <table><tr><th>Area</th><th>Owner</th><th>Counter</th><th>Kitchen</th></tr>
+  <tr><td>Dashboard & reports</td><td>✓</td><td>Today only</td><td>—</td></tr>
+  <tr><td>Orders</td><td>✓</td><td>✓</td><td>View</td></tr>
+  <tr><td>Kitchen display</td><td>✓</td><td>✓</td><td>✓</td></tr>
+  <tr><td>Menu availability</td><td>✓</td><td>✓</td><td>✓</td></tr>
+  <tr><td>Menu prices, deals, settings</td><td>✓</td><td>—</td><td>—</td></tr></table>
+</section>
+
+<section id="s7">
+  <h2><span class="n">07</span>Menu structure</h2>
+  <p class="lede">Built from Foodeez's published offering: Chicken Broast, BBQ, BBQ paratha, Zinger burgers, pizza, Chicken Karahi, Fried Rice, Tikka Boti, Reshmi Kabab, Chinese, shakes and family deals. Prices in the prototype are placeholders for management to confirm.</p>
+  <div class="flow"><span>Deals</span><span>Burgers</span><span>Broast & Fried</span><span>Pizza</span><span>BBQ</span><span>Desi Handi & Karahi</span><span>Chinese</span><span>Rolls & Wraps</span><span>Sides</span><span>Shakes & Drinks</span></div>
+</section>
+
+<section id="s8">
+  <h2><span class="n">08</span>Data model & API</h2>
+  <div class="grid2">
+<pre>MenuItem {
+  id, categoryId, name, description,
+  price, wasPrice?, imageUrl,
+  tags[], available: bool,
+  optionGroups: [{ name, required,
+    multi, choices:[{name, price}] }]
+}
+Order {
+  id "FZ-1042", createdAt, status,
+  type: delivery|pickup,
+  customer { name, phone, address },
+  items [{ itemId, qty, price, opts }],
+  subtotal, deliveryFee, discount, total,
+  payment: cod|jazzcash|easypaisa,
+  promoCode?, riderId?, note
+}</pre>
+<pre>GET    /api/menu
+POST   /api/orders          → { id, eta }
+GET    /api/orders/:id      (customer track)
+WS     /ws/orders           (live status)
+
+— admin (JWT, role-scoped) —
+GET    /api/admin/orders?status=
+PATCH  /api/admin/orders/:id  {status, riderId}
+PUT    /api/admin/menu/:id
+PATCH  /api/admin/menu/:id  {available}
+CRUD   /api/admin/promos
+GET    /api/admin/reports/daily
+PATCH  /api/admin/settings  {open,...}
+
+Stack: Next.js + Postgres (Prisma)
++ Socket.io · hosted on Vercel/Railway</pre>
+  </div>
+</section>
+
+<section id="s9">
+  <h2><span class="n">09</span>Non-functional</h2>
+  <div class="grid3">
+    <div class="card"><h4>Performance</h4><p>LCP &lt; 2.5s on 3G. Hero video ≤ 1.3MB, poster frame first, images lazy-loaded WebP.</p></div>
+    <div class="card"><h4>Reliability</h4><p>If WebSocket drops, tracker polls every 15s. New-order alerts repeat until acknowledged.</p></div>
+    <div class="card"><h4>Accessibility</h4><p>44px tap targets, AA contrast (black on yellow passes at 15:1), reduced-motion disables video.</p></div>
+  </div>
+</section>
+
+<section id="s10">
+  <h2><span class="n">10</span>Roadmap</h2>
+  <table><tr><th>Phase</th><th>Scope</th><th>Timing</th></tr>
+  <tr><td><b>v1 — Launch</b></td><td>Everything in this document marked P0/P1</td><td>Weeks 1–5</td></tr>
+  <tr><td><b>v1.1</b></td><td>SMS/WhatsApp order notifications, printed KOT, Urdu toggle</td><td>Weeks 6–8</td></tr>
+  <tr><td><b>v2</b></td><td>Customer accounts & loyalty ("every 10th zinger free"), rider app with GPS, foodpanda sync</td><td>Q1 2027</td></tr></table>
+</section>
+</main>
+<footer class="wrap">Foodeez · New College Road, Taunsa Sharif · 0333 2402964 · 0340 1710990</footer>
+</body>
+</html>
